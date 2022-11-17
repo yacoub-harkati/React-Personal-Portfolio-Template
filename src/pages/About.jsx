@@ -1,8 +1,19 @@
 import React from 'react'
+import workes from '../data/works'
 import { Link } from 'react-router-dom'
 import "../styles/About.css"
 
 export default function About() {
+  const renderedWorks = workes.map(work => {
+    return <div className="work--container">
+      <img src={work.banner} alt=" " className="work--banner" />
+      <div className="work--infos">
+        <h2 className='works--heading'>{work.title}</h2>
+        <p><span className="date">{work.year}</span> <span className="category">{work.category}</span></p>
+        <p className="short-desc">{work.desc}</p>
+      </div>
+    </div>
+  })
   return (
     <>
 
@@ -39,30 +50,7 @@ export default function About() {
       </section>
       <section className="featured--work">
         <p className='recent-post-text'>Featured works</p>
-        <div className="work--container">
-          <img src="https://cdn.discordapp.com/attachments/965026766462795786/1042814322872684564/image.png" alt=" " className="work--banner" />
-          <div className="work--infos">
-            <h2 className='works--heading'>Designing Dashboards</h2>
-            <p><span className="date">2020</span> <span className="category">Dashboard</span></p>
-            <p className="short-desc">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-          </div>
-        </div>
-        <div className="work--container">
-          <img src="https://cdn.discordapp.com/attachments/965026766462795786/1042814552062042112/image.png" alt="" className="work--banner" />
-          <div className="work--infos">
-            <h2 className='works--heading'>Vibrant Portraits of 2020</h2>
-            <p><span className="date">2018</span> <span className="category">Illustration</span></p>
-            <p className="short-desc">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-          </div>
-        </div>
-        <div className="work--container">
-          <img src="https://cdn.discordapp.com/attachments/965026766462795786/1042814552590516255/image.png" alt="" className="work--banner" />
-          <div className="work--infos">
-            <h2 className='works--heading'>36 Days of Malayalam type</h2>
-            <p><span className="date">2018</span> <span className="category">Typography</span></p>
-            <p className="short-desc">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
-          </div>
-        </div>
+        {renderedWorks.splice(0,3)}
       </section>
     </>
   )
