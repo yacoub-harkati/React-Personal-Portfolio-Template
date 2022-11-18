@@ -1,9 +1,11 @@
 import React from 'react'
 import workes from '../data/works'
+import { nanoid } from 'nanoid'
+
 export default function Workes() {
     console.log(workes)
     const renderedWorks = workes.map( work => {
-        return <div className="work--container">
+        return <div key={nanoid()} className="work--container">
           <img src={work.banner} alt=" " className="work--banner" />
           <div className="work--infos">
             <h2 className='works--heading'>{work.title}</h2>

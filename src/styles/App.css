@@ -1,6 +1,9 @@
 @import "./Variables.css";
 
-
+body, html {
+    width: 100vw;
+    overflow-x: hidden;
+}
 
 #root {
     margin: 0 auto;
@@ -8,13 +11,15 @@
     flex-direction: column;
     padding: 1.68rem;
     width: 100vw;
+    overflow-x: hidden;
     font-family: var(--fm-primary);
 }
 
 .ham {
-    display: none;
+    display: grid;
     justify-content: end;
     align-content: center;
+    padding-left: 1rem;
     cursor: pointer;
     transition: all .5s ease-in-out;
 }
@@ -22,6 +27,8 @@
 .ham .strip {
     width: 2rem;
     border: 2px solid var(--clr-dark);
+    background-color: var(--clr-dark);
+    z-index: 999;
     border-radius: 5px;
     transition: all .5s ease-in-out;
 }
@@ -30,12 +37,17 @@
 .ham .strip::before {
     content: "";
     position: absolute;
+    background-color: var(--clr-dark);
     border: 2px solid var(--clr-dark);
     border-radius: 5px;
     transition: all .5s ease-in-out;
     width: 2rem;
 }
 
+nav {
+    position: relative;
+    transition: all .5s ease-in-out;
+}
 
 .ham .strip::before {
     transform: translateY(-0.8rem);
@@ -45,12 +57,20 @@
 
 }
 
-.navigation>ul {
+.ul_links {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    padding: 3rem;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     list-style: none;
-    gap: 2rem;
-    flex-flow: row;
+    gap: 1rem;
+    border-bottom: 1px solid var(--clr-dark);
+    transition: all .5s ease-in-out;
+
 }
 
 
@@ -58,6 +78,8 @@ li a {
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--clr-dark);
+    transition: all .5s ease-in-out;
+
 }
 
 .top--section {
@@ -265,6 +287,12 @@ p .category {
 }
 
 @media (min-width: 40rem) {
+    .ham {
+        display: none;
+    }
+
+    
+
     #root {
         margin: 0 auto;
         display: flex;
@@ -272,14 +300,17 @@ p .category {
         padding: 1.68rem 3.75rem;
         width: min(60rem, 95%);
         font-family: var(--fm-primary);
+        overflow-x: visible;
     }
 
-    .navigation>ul {
+    .ul_links {
         display: none;
+        padding: 0;
         justify-content: flex-end;
         list-style: none;
         gap: 2rem;
         flex-flow: row;
+        border: none;
     }
 
 
